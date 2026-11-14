@@ -1,39 +1,28 @@
 ﻿using System;
 
-namespace Bai5
+class Program
 {
-    class Program
+    static void Main()
     {
-        static void Main(string[] args)
+        Random rand = new Random();
+        int[] mangSo = new int[1000];
+
+        for (int i = 0; i < mangSo.Length; i++)
         {
-            Console.Write("Nhap n = ");
-            int n = int.Parse(Console.ReadLine());
-
-            int a = 0;
-            int b = 1;
-            int c = 0;
-
-            if (n == 0)
-            {
-                Console.WriteLine(0);
-            }
-            else if (n == 1)
-            {
-                Console.WriteLine(1);
-            }
-            else
-            {
-                for (int i = 2; i <= n; i++)
-                {
-                    c = a + b;
-                    a = b;
-                    b = c;
-                }
-
-                Console.WriteLine("So Fibonacci thu " + n + " la: " + c);
-            }
-
-            Console.ReadKey();
+            mangSo[i] = rand.Next(0, 10000);
         }
+
+        int soLonNhat = mangSo[0];
+        int soNhoNhat = mangSo[0];
+
+        foreach (int so in mangSo)
+        {
+            if (so > soLonNhat) soLonNhat = so;
+            if (so < soNhoNhat) soNhoNhat = so;
+        }
+
+        Console.WriteLine("So lon nhat trong mang la: " + soLonNhat);
+        Console.WriteLine("So nho nhat trong mang la: " + soNhoNhat);
+        Console.ReadKey();
     }
 }
